@@ -3,6 +3,7 @@ import ThemeSwitch from "@/components/theme-switch";
 import { generalData } from "@/data/general";
 import { contentData } from "@/data/content";
 import type { Content } from "@/data/content";
+import avatar from '../me.jpg';
 
 type ContentProps = Content;
 
@@ -23,9 +24,7 @@ const Content: React.FC<ContentProps> = ({ title, items }) => {
                   {item.subTitle}
                 </p>
                 {item.description ? (
-                  <p className="text-slate-600 dark:text-gray-400 mt-2">
-                    {item.description}
-                  </p>
+                  <div className="text-slate-600 dark:text-gray-400 mt-2" dangerouslySetInnerHTML={{__html: item.description}}/>
                 ) : null}
               </div>
             </div>
@@ -42,8 +41,8 @@ export default function Home() {
       <main className="max-w-xl mx-auto px-6 py-20 relative min-h-screen font-light">
         <section className="flex items-center">
           <Image
-            alt="Author"
-            src={generalData.avatar}
+            alt={generalData.name}
+            src={avatar}
             width={80}
             height={80}
             className="rounded-full object-cover"
@@ -116,9 +115,9 @@ export default function Home() {
             })}
           </div>
         </section>
-        <div className="px-6 absolute left-0 bottom-6">
+{/*        <div className="px-6 absolute left-0 bottom-6">
           <ThemeSwitch />
-        </div>
+        </div>*/}
       </main>
     </>
   );
